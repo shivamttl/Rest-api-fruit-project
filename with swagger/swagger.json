@@ -1,0 +1,127 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "hotel management",
+      "description": "My Project Application API"
+    },
+    "host": "localhost:4545",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "fRUITS",
+        "description": "API for users in the system"
+      }
+    ],
+    "schemes": ["http"],
+
+    "paths": {
+      "/inventory/{name}": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "description": "ID of user that we want to find",
+            "type": "string"
+          }
+        ],
+        "put": {
+          "summary": "Update user with give ID",
+          "tags": ["Users"],
+          "parameters": [
+            {
+              "name": "Book",
+              "in": "body",
+              "description": "User with new values of properties"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "User is updated",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete user with given ID",
+          "tags": ["Users"],
+          "responses": {
+            "200": {
+              "description": "User is deleted",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        },
+        "get":{
+          "summary": "find user with given ID",
+          "tags": ["Users"],
+          "responses": {
+            "200": {
+              "description": "User Found",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      },
+      "/inventory": {
+        "get": {
+          "tags": ["Users"],
+          "summary": "Get all users in system",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "description": "Create new user in system",
+          "parameters": [
+            {
+              "name": "user",
+              "in": "body",
+              "description": "User that we want to create",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "New user is created",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        } 
+      }
+    },
+    "definitions": {
+      "User": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+
+
+
